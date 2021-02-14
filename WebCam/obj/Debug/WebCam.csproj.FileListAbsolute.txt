@@ -9,3 +9,14 @@ C:\Users\thyag\Source\Repos\WebCam\WebCam\obj\Debug\WebCam.csproj.CoreCompileInp
 C:\Users\thyag\Source\Repos\WebCam\WebCam\obj\Debug\WebCam.csproj.CopyComplete
 C:\Users\thyag\Source\Repos\WebCam\WebCam\obj\Debug\WebCam.exe
 C:\Users\thyag\Source\Repos\WebCam\WebCam\obj\Debug\WebCam.pdb
+C:\Users\thyag\Source\Repos\floatwebcam\WebCam\bin\Debug\WebCam.exe.config
+C:\Users\thyag\Source\Repos\floatwebcam\WebCam\bin\Debug\WebCam.exe
+C:\Users\thyag\Source\Repos\floatwebcam\WebCam\bin\Debug\WebCam.pdb
+C:\Users\thyag\Source\Repos\floatwebcam\WebCam\obj\Debug\WebCam.csprojAssemblyReference.cache
+C:\Users\thyag\Source\Repos\floatwebcam\WebCam\obj\Debug\WebCam.Form1.resources
+C:\Users\thyag\Source\Repos\floatwebcam\WebCam\obj\Debug\WebCam.Properties.Resources.resources
+C:\Users\thyag\Source\Repos\floatwebcam\WebCam\obj\Debug\WebCam.csproj.GenerateResource.cache
+C:\Users\thyag\Source\Repos\floatwebcam\WebCam\obj\Debug\WebCam.csproj.CoreCompileInputs.cache
+C:\Users\thyag\Source\Repos\floatwebcam\WebCam\obj\Debug\WebCam.csproj.CopyComplete
+C:\Users\thyag\Source\Repos\floatwebcam\WebCam\obj\Debug\WebCam.exe
+C:\Users\thyag\Source\Repos\floatwebcam\WebCam\obj\Debug\WebCam.pdb

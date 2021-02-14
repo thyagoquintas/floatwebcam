@@ -72,7 +72,7 @@ namespace WebCam
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(262, 42);
             this.button1.TabIndex = 3;
-            this.button1.Text = "Ativar Camera";
+            this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -101,8 +101,9 @@ namespace WebCam
             this.Controls.Add(this.cbxWide);
             this.Controls.Add(this.cbxCamera);
             this.Controls.Add(this.picWebCam);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "frmWebCam";
+            this.Text = "Float WebCam";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.picWebCam)).EndInit();
