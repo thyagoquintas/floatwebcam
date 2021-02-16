@@ -11,6 +11,10 @@ namespace WebCam
         public DirectX.Capture.Capture CaptureInfo;
         public DirectX.Capture.Filters CamContainer;
         Image capturaImagem;
+
+        //Window Size
+        float width = 320;
+        float height = 240;
         Size windowSize;
         bool wide = false;
 
@@ -21,18 +25,54 @@ namespace WebCam
         public Form1()
         {
             InitializeComponent();
+            this.MouseWheel += Zoom;
         }
 
-        public void Posicao()
+        private void Zoom(object sender, MouseEventArgs e)
         {
-            this.StartPosition = FormStartPosition.Manual;
-            foreach (var scrn in Screen.AllScreens)
-            {
-                if (scrn.Bounds.Contains(this.Location))
+            //Se tiver valor de captura de camera
+            if (capturaImagem != null) { 
+                int w = 4;
+                int h = 3;
+                if (wide)
                 {
-                    this.Location = new Point(scrn.Bounds.Right - this.Width - 10, scrn.Bounds.Bottom - this.Height - 10);
-                    return;
+                    w = 16;
+                    h = 9;
                 }
+
+                if(e.Delta > 0)
+                {
+                    width += w;
+                    height += h;
+                    Posicao(w, h);
+                }
+                else
+                {
+                    width -= w;
+                    height -= h;
+                    Posicao(-w, -h);
+                }
+                Resize();
+            }
+        }
+
+        public void Posicao(int w = -1, int h = -1)
+        {
+            if (w == -1 || h == -1)
+            {
+                this.StartPosition = FormStartPosition.Manual;
+                foreach (var scrn in Screen.AllScreens)
+                {
+                    if (scrn.Bounds.Contains(this.Location))
+                    {
+                        this.Location = new Point(scrn.Bounds.Right - this.Width - 10, scrn.Bounds.Bottom - this.Height - 10);
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                this.Location = new Point(this.Location.X - w, this.Location.Y - h);
             }
         }
 
@@ -53,12 +93,6 @@ namespace WebCam
             {
                 capturaImagem = frame.Image;
                 this.picWebCam.Image = capturaImagem;
-                
-                //Função de movimentação
-                this.pbxMove.Visible = true;
-                this.pbxMove.MouseDown += MouseDown;
-                this.pbxMove.MouseMove += MouseMove;
-                this.pbxMove.MouseUp += MouseUp;
             }
             catch (Exception ex)
             {
@@ -80,6 +114,12 @@ namespace WebCam
                 CaptureInfo.FrameCaptureComplete += AtualizaImagem;
                 //Captura o frame do dispositivo
                 CaptureInfo.CaptureFrame();
+
+                //Função de movimentação
+                this.pbxMove.Visible = true;
+                this.pbxMove.MouseDown += MouseDown;
+                this.pbxMove.MouseMove += MouseMove;
+                this.pbxMove.MouseUp += MouseUp;
             }
             catch (Exception ex)
             {
@@ -107,33 +147,8 @@ namespace WebCam
             }
         }
 
-        private void Form1_ResizeEnd(object sender, EventArgs e)
+        private void Resize()
         {
-            //Fixo 320 x 240
-            float width = 320;
-            float height = 240;
-
-            if (wide)
-            {
-                width = 427;
-                height = 240;
-            }
-
-            /**
-             * Ajustar o código para trabalhar com ratio no redimecionamento para a próxima versão
-             *
-             *
-            
-            float ratio = (float)this.Size.Width / ((float)windowSize.Width / (float)windowSize.Height);
-            if(ratio == 1)
-            {
-                ratio = (float)this.Size.Height * ((float)windowSize.Height / (float)windowSize.Width);
-            }
-
-            float width = (float)this.Size.Width * ratio;
-            float height = (float)this.Size.Height * ratio;
-            */
-
             windowSize = new Size((int)width - 1, (int)height);
 
             this.Size = windowSize;
@@ -153,9 +168,11 @@ namespace WebCam
             if (cbxWide.Checked)
             {
                 wide = true;
+                width = 427;
+                height = 240;
             }
             //Redimenciona a tela
-            Form1_ResizeEnd(null, null);
+            Resize();
 
             //Ativa a camera Selecionada
             AtivaCamera(cbxCamera.SelectedIndex);

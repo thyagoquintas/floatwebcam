@@ -105,7 +105,6 @@ namespace WebCam
             this.Name = "Form1";
             this.Text = "Float WebCam";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.picWebCam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxMove)).EndInit();
             this.ResumeLayout(false);
